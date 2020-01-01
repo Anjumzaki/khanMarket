@@ -9,12 +9,14 @@ import Favourite from './screens/Favourite'
 import PastOrders from './screens/PastOrders'
 import Cart from './screens/Cart'
 import Login from './screens/Login'
+import LatoText from './LatoText'
 import {
     Entypo, Feather, FontAwesome,
     EvilIcons,
-    AntDesign
+    AntDesign,MaterialIcons
 } from '@expo/vector-icons';
 import SignUp from './screens/SignUp'
+
 const MainTabs = createBottomTabNavigator({
     Home: {
         screen: Home,
@@ -53,7 +55,7 @@ const MainTabs = createBottomTabNavigator({
             headerTitle: 'Details',
             showLabel: false,
             tabBarIcon: ({ focused }) => (
-                <Entypo name="shopping-cart" size={26} color={focused ? '#2e2e2e' : "#89898c"} />
+                <MaterialIcons name="shopping-cart" size={26} color={focused ? '#2e2e2e' : "#89898c"} />
             ),
         },
     },
@@ -78,37 +80,35 @@ const MainTabs = createBottomTabNavigator({
 }
 );
 
-const ImageHeader = props => {
+const ImageHeader = props => { 
     return (
-        <View style={{ height: 170, justifyContent: 'flex-end', padding: 5, backgroundColor: 'transparent' }}>
+        <View style={{ height: 170,width:Dimensions.get('window').width, justifyContent: 'flex-end', padding: 5, backgroundColor: 'transparent' }}>
             <Image
-                style={{ height: 170, position: 'absolute', top: 0, left: 0 }}
+                style={{ height: 170, width:Dimensions.get('window').width, position: 'absolute', top: 0, left: 0 }}
                 source={require('./assets/bgheader.png')}
                 resizeMode="cover"
             />
             <Header {...props} style={{ backgroundColor: 'transparent', justifyContent: 'center' }} />
+            <View style={{flexDirection:'row',justifyContent:'center',alignItems:'center',position:'relative',bottom:15}}>
+            <MaterialIcons style={{ marginTop: 4,}} name="location-on" size={21} color="white" />
+                <LatoText fontName="Lato-bold" text="Hemisphere Black 32" />
+            </View>
             <View style={{ flexDirection: 'row' }}>
                 <View style={styles.wrapperText}>
-                    <EvilIcons name="search" size={34} color="#89898c" />
+                    <EvilIcons name="search" size={26} color="#89898c" />
                     <TextInput
                         style={styles.textI}
-                        placeholder="Search in Khan Market..."
+                        placeholder="Search..."
                     />
                 </View>
-                <View style={{ width: '15%', justifyContent: 'center', alignContent: 'center', paddingLeft: 10, marginBottom: 10 }} >
-                    <AntDesign name="filter" size={34} color="white" />
-                </View>
-                
-            </View>
-            <View style={{ flexDirection: 'row',paddingLeft:10, marginTop:10,backgroundColor: 'rgba(252, 252, 252, 0.3)',margin:-5}}>
-                    <EvilIcons style={{marginTop:4,backgroundColor:'transparent'}} name="location" size={26} color="white" />
-                    <Text style={{color:'white',fontSize:20,backgroundColor:'transparent'}}>Hemisphere black 32</Text>
+
             </View>
         </View>
     );
 }
+
 const DrawerNavigator = createDrawerNavigator({
-    Home: { screen: MainTabs },
+    Home: MainTabs,
     Login,
     SignUp,
 }, {
@@ -124,10 +124,12 @@ const DrawerNavigator = createDrawerNavigator({
             alignSelf: 'center',
             fontWeight: 'bold'
         },
-        headerRight: <View></View>,
+        headerRight: <View style={{ paddingRight: 10 }} >
+             <MaterialIcons name="shopping-cart" size={26} color="white" />
+        </View>,
         headerLeft:
-            <TouchableHighlight onPress={() => navigation.openDrawer()}>
-                <Entypo name="menu" size={32} color="white" />
+            <TouchableHighlight style={{ paddingLeft: 10 }} onPress={() => navigation.toggleDrawer()}>
+                <Image source={require('./assets/menu-1.png')}></Image>
             </TouchableHighlight >
     }),
 
@@ -152,21 +154,22 @@ const AppContainer = createAppContainer(RootStack);
 export default AppContainer
 const styles = StyleSheet.create({
     textI: {
-        width: '80%',
+        width: '100%',
         paddingLeft: 5,
         fontSize: 17,
     },
     wrapperText: {
         flexDirection: 'row',
         backgroundColor: 'white',
-        width: '85%',
+        width: '94%',
         paddingHorizontal: 7,
         paddingVertical: 7,
-        borderRadius: 50,
+        borderRadius: 5,
         paddingLeft: 20,
         marginLeft: 10,
         marginBottom: 10,
-        opacity: 0.9
+        opacity: 0.9,
 
+        alignItems: 'center'
     }
 });
