@@ -13,7 +13,8 @@ import LatoText from './LatoText'
 import {
     Entypo, Feather, FontAwesome,
     EvilIcons,
-    AntDesign,MaterialIcons
+    AntDesign,MaterialIcons,
+MaterialCommunityIcons
 } from '@expo/vector-icons';
 import SignUp from './screens/SignUp'
 
@@ -45,7 +46,7 @@ const MainTabs = createBottomTabNavigator({
             headerTitle: 'Details',
             showLabel: false,
             tabBarIcon: ({ focused }) => (
-                <Feather name="clock" size={26} color={focused ? '#2e2e2e' : "#89898c"} />
+                <MaterialCommunityIcons name="clipboard-text" size={26} color={focused ? '#2e2e2e' : "#89898c"} />
             ),
         },
     },
@@ -90,8 +91,8 @@ const ImageHeader = props => {
             />
             <Header {...props} style={{ backgroundColor: 'transparent', justifyContent: 'center' }} />
             <View style={{flexDirection:'row',justifyContent:'center',alignItems:'center',position:'relative',bottom:15}}>
-            <MaterialIcons style={{ marginTop: 4,}} name="location-on" size={21} color="white" />
-                <LatoText fontName="Lato-bold" text="Hemisphere Black 32" />
+            <MaterialIcons  name="location-on" size={16} color="white" />
+                <LatoText fontName="Lato-Light" fonSiz={16} col='white' text="Hemisphere Black 32" />
             </View>
             <View style={{ flexDirection: 'row' }}>
                 <View style={styles.wrapperText}>

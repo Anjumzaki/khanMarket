@@ -9,7 +9,11 @@ class LatoText extends React.Component {
       };
       async componentDidMount() {
         await Font.loadAsync({
-          'Lato-bold': require('./assets/fonts/Lato-Light.ttf'),
+          'Lato-Light': require('./assets/fonts/Lato-Light.ttf'),
+          'Lato-Bold': require('./assets/fonts/Lato-Bold.ttf'),
+          'Lato-Regular': require('./assets/fonts/Lato-Regular.ttf'),
+
+
         });
     
         this.setState({ fontLoaded: true });
@@ -19,11 +23,11 @@ class LatoText extends React.Component {
     return (
       
         
-            this.state.fontLoaded ? (
-              <Text style={{fontFamily: this.props.fontName,color:'white',fontSize:15,backgroundColor:'transparent'}}>
+           
+              <Text style={{fontFamily:  this.state.fontLoaded ? ( this.props.fontName ) : null,color:this.props.col,fontSize:this.props.fonSiz}}>
                 {this.props.text}
               </Text>
-            ) : null
+          
           
     );
   }

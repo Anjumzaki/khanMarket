@@ -1,10 +1,12 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
+import Slider from '../components/Slider'
 
 class Home extends React.Component {
   render(){
     return (
-        <View style={styles.container}>
+        <View >
+          <Slider/>
             <Text>
                 I am Home
             </Text>
