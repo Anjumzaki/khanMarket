@@ -127,9 +127,9 @@ class Home extends React.Component {
        <CardsRow products={this.state.beefs} name={'Beef'}/>
        <CardsRow products={this.state.chickens} name={'Chicken'}/>
        <CardsRow products={this.state.vegs} name={'Vegetables'}/>
-        <Text>
-          I am Home
-            </Text>
+     <View style={{paddingTop:10}}>
+
+     </View>
       </ScrollView>
     );
   }

@@ -13,8 +13,8 @@ import LatoText from './LatoText'
 import {
     Entypo, Feather, FontAwesome,
     EvilIcons,
-    AntDesign,MaterialIcons,
-MaterialCommunityIcons
+    AntDesign, MaterialIcons,
+    MaterialCommunityIcons
 } from '@expo/vector-icons';
 import SignUp from './screens/SignUp'
 
@@ -69,34 +69,52 @@ const MainTabs = createBottomTabNavigator({
         style: {
             backgroundColor: '#efeff4',
             borderTopColor: '#efeff4',
-            paddingHorizontal: 30,
+            shadowColor: "#000",
             shadowOffset: {
-                width: 0,
-                height: 0,
+                width: 10,
+                height: 11,
             },
-            shadowOpacity: 1,
-            shadowRadius: 3.84,
-            borderTopWidth: 0,
-            elevation: -10,
+            shadowOpacity: 0.57,
+            shadowRadius: 15.19,
+            elevation: 23, 
         },
-        
+        tabStyle:{
+            shadowColor: "#000",
+        shadowOffset: {
+            width: 10,
+            height: 11,
+        },
+        shadowOpacity: 0.57,
+        shadowRadius: 15.19,
+        elevation: 23, 
+        }
+
 
     },
     initialRouteName: 'Home'
 }
 );
 
-const ImageHeader = props => { 
+const ImageHeader = props => {
     return (
-        <View style={{ height: 170,width:Dimensions.get('window').width, justifyContent: 'flex-end', padding: 5, backgroundColor: 'transparent' }}>
+        <View style={{
+            height: 170, width: Dimensions.get('window').width, justifyContent: 'flex-end', padding: 5, backgroundColor: 'transparent', shadowOffset: {
+                width: 0,
+                height: 0,
+            },
+            shadowOpacity: 1,
+            shadowRadius: 3.84,
+            borderTopWidth: 0,
+            elevation: 5,
+        }}>
             <Image
-                style={{ height: 170, width:Dimensions.get('window').width, position: 'absolute', top: 0, left: 0 }}
+                style={{ height: 170, width: Dimensions.get('window').width, position: 'absolute', top: 0, left: 0 }}
                 source={require('./assets/bgheader.png')}
                 resizeMode="cover"
             />
             <Header {...props} style={{ backgroundColor: 'transparent', justifyContent: 'center' }} />
-            <View style={{flexDirection:'row',justifyContent:'center',alignItems:'center',position:'relative',bottom:15}}>
-            <MaterialIcons  name="location-on" size={16} color="white" />
+            <View style={{ flexDirection: 'row', justifyContent: 'center', alignItems: 'center', position: 'relative', bottom: 15 }}>
+                <MaterialIcons name="location-on" size={16} color="white" />
                 <LatoText fontName="Lato-Light" fonSiz={16} col='white' text="Hemisphere Black 32" />
             </View>
             <View style={{ flexDirection: 'row' }}>
@@ -114,7 +132,7 @@ const ImageHeader = props => {
 }
 
 const DrawerNavigator = createDrawerNavigator({
-    Home: MainTabs,
+    Home: {screen: MainTabs},
     Login,
     SignUp,
 }, {
@@ -122,16 +140,26 @@ const DrawerNavigator = createDrawerNavigator({
     navigationOptions: ({ navigation }) => ({
         header: props => <ImageHeader {...props} />,
         title: 'KHAN MARKET',
-        headerStyle: { backgroundColor: 'transparent', },
+        headerStyle: { backgroundColor: 'transparent', shadowColor: "#000",
+        shadowOffset: {
+            width: 10,
+            height: 11,
+        },
+        shadowOpacity: 0.57,
+        shadowRadius: 15.19,
+
+        elevation: 23, },
         headerTintColor: 'white',
         headerTitleStyle: {
             textAlign: 'center',
             flexGrow: 1,
             alignSelf: 'center',
-            fontWeight: 'bold'
+            fontWeight: 'light',
+            fontSize: 22,
+           
         },
         headerRight: <View style={{ paddingRight: 10 }} >
-             <MaterialIcons name="shopping-cart" size={26} color="white" />
+            <MaterialIcons name="shopping-cart" size={26} color="white" />
         </View>,
         headerLeft:
             <TouchableHighlight style={{ paddingLeft: 10 }} onPress={() => navigation.toggleDrawer()}>
@@ -143,12 +171,13 @@ const DrawerNavigator = createDrawerNavigator({
     drawerOpenRoute: 'drawerOpen',
     drawerCloseRoute: 'drawerClose',
     drawerToggleRoute: 'drawerToggle',
+
 });
 const RootStack = createStackNavigator(
     {
         Login: Login,
         SignUp: SignUp,
-        MainTabs: DrawerNavigator
+        MainTabs:{screen: DrawerNavigator}
     },
     {
         initialRouteName: 'MainTabs',
@@ -175,7 +204,6 @@ const styles = StyleSheet.create({
         marginLeft: 10,
         marginBottom: 10,
         opacity: 0.9,
-
         alignItems: 'center'
     }
 });

@@ -1,21 +1,35 @@
 import React from 'react';
-import { StyleSheet, Text, View, ImageBackground } from 'react-native';
+import { StyleSheet, Text, View, ImageBackground,TouchableOpacity } from 'react-native';
+import LatoText from '../LatoText';
+import {
+  AntDesign} from '@expo/vector-icons'
 
 class ProCards extends React.Component {
+  state = {
+    heart:false
+  }
   render() {
     return (
       <View style={styles.procards}>
         <ImageBackground  style={styles.proCardsImage} source={this.props.product.image}>
-          <Text> heart</Text>
+          <TouchableOpacity onPress={()=>this.setState(prevState => {
+      return {
+        heart : !prevState.heart
+      };
+    })} style={{alignSelf:'flex-end',backgroundColor:'rgba(255, 255, 255,0.5)',margin:10,padding:7,borderRadius:50}} > 
+          {this.state.heart ?<AntDesign color='#B50000' size={18} name="heart"/>:<AntDesign color='#B50000' size={18} name="hearto"/> }
+          </TouchableOpacity>
         </ImageBackground>
         <View style={styles.underCard}>
-          <Text>{this.props.product.name}</Text>
-          <View style={{flex: 1, flexDirection: 'row', justifyContent: "space-around"}}>
-            <Text>${this.props.product.price}/kg</Text>
-            <Text>${this.props.product.price - ((this.props.product.price * this.props.product.discount)/100)}/kg</Text>
+        <LatoText fontName="Lato-Regular" fonSiz={20} col='#5C5C5C' text={this.props.product.name} ></LatoText>
+          <View style={{flex: 1, flexDirection: 'row',paddingTop:5}}>
+          <LatoText fontName="Lato-Regular" fonSiz={17} col='#89898C' text= { '$' +this.props.product.price + ' / kg'} ></LatoText>
+          <Text>     </Text>
+          <LatoText fontName="Lato-Regular" fonSiz={17} col='#2E2E2E' text= { '$' +(this.props.product.price - ((this.props.product.price * this.props.product.discount)/100)) + ' / kg'} ></LatoText>
+
           </View>
           <View>
-            <Text style={{textAlign: 'center', color: 'red'}}>You will save {this.props.product.discount}%</Text>
+          <LatoText fontName="Lato-Regular" fonSiz={15} col='#B50000' text= {'You will save' + this.props.product.discount + '%'} ></LatoText>
           </View>
         </View>
       </View>
@@ -37,13 +51,12 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     shadowColor: "#000",
     shadowOffset: {
-      width: 4,
+      width: 0,
       height: 5,
     },
     shadowOpacity: 0.5,
     shadowRadius: 3.84,
-    
-    elevation: 3
+    elevation: 5
   },
   proCardsImage: {
     width: 217,
@@ -57,6 +70,7 @@ const styles = StyleSheet.create({
     height:95,
     borderBottomLeftRadius:10,
     borderBottomRightRadius:10,
+    padding:10
     
   }
 });
