@@ -5,11 +5,18 @@ class ProCards extends React.Component {
   render() {
     return (
       <View style={styles.procards}>
-        <ImageBackground  style={styles.proCardsImage} source={require('../assets/products/1.png')}>
-          <Text> I am here</Text>
+        <ImageBackground  style={styles.proCardsImage} source={this.props.product.image}>
+          <Text> heart</Text>
         </ImageBackground>
         <View style={styles.underCard}>
-          <Text>I am here</Text>
+          <Text>{this.props.product.name}</Text>
+          <View style={{flex: 1, flexDirection: 'row', justifyContent: "space-around"}}>
+            <Text>${this.props.product.price}/kg</Text>
+            <Text>${this.props.product.price - ((this.props.product.price * this.props.product.discount)/100)}/kg</Text>
+          </View>
+          <View>
+            <Text style={{textAlign: 'center', color: 'red'}}>You will save {this.props.product.discount}%</Text>
+          </View>
         </View>
       </View>
     );

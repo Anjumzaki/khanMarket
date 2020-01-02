@@ -4,13 +4,18 @@ import ProCards from './ProCards'
 import LatoText from '../LatoText'
 import { MaterialCommunityIcons } from '@expo/vector-icons'
 import { TouchableOpacity } from 'react-native-gesture-handler';
+
 class Cart extends React.Component {
+
+   
+
+
     render() {
         return (
             <View>
                 <View style={{ flexDirection: 'row', padding: 10 }}>
                     <View style={{ width: '80%' }}>
-                        <LatoText fontName="Sarabun-Light" fonSiz={21} col='#5C5C5C' text="Beef" ></LatoText>
+                        <LatoText fontName="Sarabun-Light" fonSiz={21} col='#5C5C5C' text={this.props.name} ></LatoText>
                     </View>
                     <TouchableOpacity>
                         <View style={{  justifyContent: 'center', position: 'relative', top: 12 }}>
@@ -27,10 +32,9 @@ class Cart extends React.Component {
                         horizontal={true}
                         showsHorizontalScrollIndicator={false}
                     >
-                        <ProCards />
-                        <ProCards />
-                        <ProCards />
-                        <ProCards />
+                        {this.props.products.map((prod,index) => (
+                        <ProCards key={index} product={prod}/>
+                        ))}
                     </ScrollView>
                 </View>
             </View>
