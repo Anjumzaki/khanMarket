@@ -12,7 +12,9 @@ class LatoText extends React.Component {
           'Lato-Light': require('./assets/fonts/Lato-Light.ttf'),
           'Lato-Bold': require('./assets/fonts/Lato-Bold.ttf'),
           'Lato-Regular': require('./assets/fonts/Lato-Regular.ttf'),
-
+          'Sarabun-Regular': require('./assets/fonts/Sarabun-Regular.ttf'),
+          'Sarabun-Medium': require('./assets/fonts/Sarabun-Medium.ttf'),
+          'Sarabun-Light': require('./assets/fonts/Sarabun-Light.ttf'),
 
         });
     

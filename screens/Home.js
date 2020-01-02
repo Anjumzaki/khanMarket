@@ -1,16 +1,20 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View,ScrollView } from 'react-native';
 import Slider from '../components/Slider'
+import CardsRow from '../components/CardsRow'
 
 class Home extends React.Component {
-  render(){
+  render() {
     return (
-        <View >
-          <Slider/>
-            <Text>
-                I am Home
+      <ScrollView showsVerticalScrollIndicator={false} >
+        <Slider />
+       <CardsRow/>
+       <CardsRow/>
+       <CardsRow/>
+        <Text>
+          I am Home
             </Text>
-        </View>
+      </ScrollView>
     );
   }
 }

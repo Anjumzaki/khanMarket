@@ -70,11 +70,16 @@ const MainTabs = createBottomTabNavigator({
             backgroundColor: '#efeff4',
             borderTopColor: '#efeff4',
             paddingHorizontal: 30,
-            shadowOffset: { width: 5, height: 3 },
-            shadowColor: 'black',
-            shadowOpacity: 0.5,
-            elevation: 5
+            shadowOffset: {
+                width: 0,
+                height: 0,
+            },
+            shadowOpacity: 1,
+            shadowRadius: 3.84,
+            borderTopWidth: 0,
+            elevation: -10,
         },
+        
 
     },
     initialRouteName: 'Home'

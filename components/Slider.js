@@ -73,6 +73,7 @@ import {
 } from 'react-native';
 import Carousel from 'react-native-looped-carousel';
 import LatoText from '../LatoText'
+import SliderItem from './SliderItem'
 
 const { width } = Dimensions.get('window');
 const { height } = 300;
@@ -85,6 +86,34 @@ export default class CarouselExample extends Component {
 
         this.state = {
             size: { width, height },
+            data:{
+                Discount:'2 Packs for $2.20',
+                DisAmmount:'Save $1.30',
+                imgUrl:require('../assets/cabbage.png'),
+                itemDescri:'Fresh broccoli from the gardens of colombia',
+                colo:'#7cba80',
+            },
+            data1:{
+                Discount:'2 Kg for $3.00',
+                DisAmmount:'Save $1.00',
+                imgUrl:require('../assets/kenya.jpg'),
+                itemDescri:'Green beans from kenya highly fresh and hygenic ',
+                colo:'#63cdda',
+            },
+            data2:{
+                Discount:'3 dozen for $1.70',
+                DisAmmount:'Save $0.30',
+                imgUrl:require('../assets/carrots-vegetables.jpg'),
+                itemDescri:'Fresh carots from Bangladesh high in fiber',
+                colo:'#cf6a87',
+            },
+            data3:{
+                Discount:'5 dozen for $4.70',
+                DisAmmount:'Save $2.50',
+                imgUrl:require('../assets/orange-fruit-161559.jpg'),
+                itemDescri:'Fresh orange from the gardens of nepal',
+                colo:'#e15f41',
+            },
         };
     }
 
@@ -99,120 +128,16 @@ export default class CarouselExample extends Component {
                 <Carousel
                     delay={6000}
                     style={{ width: Dimensions.get('window').width, height: 250 }}
-                    autoplay={false}
+                    autoplay={true}
                     bullets
                     onAnimateNextPage={(p) => console.log(p)}
                     bulletStyle={{ padding: 0, margin: 3, marginBottom: 110 }}
                     chosenBulletStyle={{ padding: 0, margin: 3, marginBottom: 110 }}
                 >
-                    <View>
-                        <ImageBackground style={styles.imgCon} source={require('../assets/cabbage.png')} >
-                            <View style={styles.wrapTop}>
-
-                                <View style={styles.topRight}>
-                                    <LatoText fontName="Lato-Bold" fonSiz={16} col='white' text="2 Packs For $2.20" />
-                                    <View style={{ marginTop: 5 }}>
-                                        <LatoText fontName="Lato-Light" fonSiz={13} col='white' text="Save $1.30" />
-                                    </View>
-                                </View>
-                            </View>
-                            <View style={styles.bottomText}>
-                                <ImageBackground style={{ width: Dimensions.get('window').width, height: 170 }} source={require('../assets/bgSlider.png')} >
-                                    <View style={{ flexDirection: 'row' }}>
-                                        <View style={{ paddingTop: 105, paddingHorizontal: 10, width: '73%' }}>
-                                            <LatoText fontName="Lato-Regular" fonSiz={17} col='white' text="Fresh broccoli from the gardens of colombia" />
-                                        </View>
-                                        <View style={{ paddingTop: 105, paddingHorizontal: 10, width: '30%', justifyContent: 'flex-end' }}>
-                                            <TouchableOpacity style={styles.buybBtn}>
-                                                <LatoText fontName="Lato-Regular" fonSiz={16} col='gray' text="BUY" />
-                                            </TouchableOpacity>
-                                        </View>
-                                    </View>
-                                </ImageBackground>
-                            </View>
-                        </ImageBackground>
-                    </View>
-                    <View>
-                        <ImageBackground style={styles.imgCon} source={require('../assets/cabbage.png')} >
-                            <View style={styles.wrapTop}>
-
-                                <View style={styles.topRight}>
-                                    <LatoText fontName="Lato-Bold" fonSiz={16} col='white' text="2 Packs For $2.20" />
-                                    <View style={{ marginTop: 5 }}>
-                                        <LatoText fontName="Lato-Light" fonSiz={13} col='white' text="Save $1.30" />
-                                    </View>
-                                </View>
-                            </View>
-                            <View style={styles.bottomText}>
-                                <ImageBackground style={{ width: Dimensions.get('window').width, height: 170 }} source={require('../assets/bgSlider.png')} >
-                                    <View style={{ flexDirection: 'row' }}>
-                                        <View style={{ paddingTop: 105, paddingHorizontal: 10, width: '73%' }}>
-                                            <LatoText fontName="Lato-Regular" fonSiz={17} col='white' text="Fresh broccoli from the gardens of colombia" />
-                                        </View>
-                                        <View style={{ paddingTop: 105, paddingHorizontal: 10, width: '30%', justifyContent: 'center' }}>
-                                            <TouchableOpacity style={styles.buybBtn}>
-                                                <LatoText fontName="Lato-Regular" fonSiz={16} col='gray' text="BUY" />
-                                            </TouchableOpacity>
-                                        </View>
-                                    </View>
-                                </ImageBackground>
-                            </View>
-                        </ImageBackground>
-                    </View>
-                    <View>
-                        <ImageBackground style={styles.imgCon} source={require('../assets/cabbage.png')} >
-                            <View style={styles.wrapTop}>
-
-                                <View style={styles.topRight}>
-                                    <LatoText fontName="Lato-Bold" fonSiz={16} col='white' text="2 Packs For $2.20" />
-                                    <View style={{ marginTop: 5 }}>
-                                        <LatoText fontName="Lato-Light" fonSiz={13} col='white' text="Save $1.30" />
-                                    </View>
-                                </View>
-                            </View>
-                            <View style={styles.bottomText}>
-                                <ImageBackground style={{ width: Dimensions.get('window').width, height: 170 }} source={require('../assets/bgSlider.png')} >
-                                    <View style={{ flexDirection: 'row' }}>
-                                        <View style={{ paddingTop: 105, paddingHorizontal: 10, width: '73%' }}>
-                                            <LatoText fontName="Lato-Regular" fonSiz={17} col='white' text="Fresh broccoli from the gardens of colombia" />
-                                        </View>
-                                        <View style={{ paddingTop: 105, paddingHorizontal: 10, width: '30%', justifyContent: 'center' }}>
-                                            <TouchableOpacity style={styles.buybBtn}>
-                                                <LatoText fontName="Lato-Regular" fonSiz={16} col='gray' text="BUY" />
-                                            </TouchableOpacity>
-                                        </View>
-                                    </View>
-                                </ImageBackground>
-                            </View>
-                        </ImageBackground>
-                    </View>
-                    <View>
-                        <ImageBackground style={styles.imgCon} source={require('../assets/cabbage.png')} >
-                            <View style={styles.wrapTop}>
-
-                                <View style={styles.topRight}>
-                                    <LatoText fontName="Lato-Bold" fonSiz={16} col='white' text="2 Packs For $2.20" />
-                                    <View style={{ marginTop: 5 }}>
-                                        <LatoText fontName="Lato-Light" fonSiz={13} col='white' text="Save $1.30" />
-                                    </View>
-                                </View>
-                            </View>
-                            <View style={styles.bottomText}>
-                                <ImageBackground style={{ width: Dimensions.get('window').width, height: 170 }} source={require('../assets/bgSlider.png')} >
-                                    <View style={{ flexDirection: 'row' }}>
-                                        <View style={{ paddingTop: 105, paddingHorizontal: 10, width: '73%' }}>
-                                            <LatoText fontName="Lato-Regular" fonSiz={17} col='white' text="Fresh broccoli from the gardens of colombia" />
-                                        </View>
-                                        <View style={{ paddingTop: 105, paddingHorizontal: 10, width: '30%', justifyContent: 'center' }}>
-                                            <TouchableOpacity style={styles.buybBtn}>
-                                                <LatoText fontName="Lato-Regular" fonSiz={16} col='gray' text="BUY" />
-                                            </TouchableOpacity>
-                                        </View>
-                                    </View>
-                                </ImageBackground>
-                            </View>
-                        </ImageBackground>
-                    </View>
+                    <SliderItem data={this.state.data}/>
+                    <SliderItem data={this.state.data1}/>
+                    <SliderItem data={this.state.data2}/>
+                    <SliderItem data={this.state.data3}/>
                 </Carousel>
             </View>
         );
